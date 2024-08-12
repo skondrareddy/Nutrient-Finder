@@ -1,95 +1,103 @@
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-.home{
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center; /* Align items to the top */
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    height: 100%; /* Ensure full height */
+}
+
+.home {
+    display: flex;
+    justify-content: center;
     background-color: transparent;
-    position: absolute; /* Position the element absolutely */
-    top: 0; /* Align it to the top of the page */
-    width: 100%; /* Ensure it takes the full width of the page */
+    position: absolute;
+    top: 0;
+    width: 100%;
     color: white;
     height: 100vh;
     animation: fadeInOut 3s linear infinite;
-    
 }
-h1{
+
+h1 {
     font-size: 3em;
     font-weight: bold;
 }
+
+.content-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
 .content {
     display: flex;
-    justify-content: center; /* Center align items horizontally */
-    align-items:center; /* Center align items vertically */
-    padding-top:150px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
     width: 100%;
     background-image: url('/public/My-nutri.jpg');
-    background-size: cover; /* Optional: to cover the entire container */
-    background-position: center; /* Optional: to center the image */
-    height: 20vh /* Full height minus the header height */
-  }
-.inputstyle{
-    width: 50%;
-    height: 30px;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    background-size: cover;
+    background-position: center;
+    height: 20vh;
 }
-.search-icon {
-    position: absolute;
-    right: 588px;
-    top: 30%;
-    transform: translateY(-50%);
-    font-size: 20px; /* Adjust size as needed */
-    pointer-events: none; /* Make sure the icon doesn't block input interactions */
-  }
-  .upload-icon {
-    position: absolute;
-    right: 480px;
-    top: 46%;
-    transform: translateY(-50%);
-    font-size: 20px; /* Adjust size as needed */
-}
+
 .input-wrapper {
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .text-input {
+    width: 600px; /* Adjust the width as needed */
+}
+
+.text-input {
     flex: 1;
-    padding-right: 40px; /* Make space for the upload icon */
-    width: 600px;
+    padding-right: 40px; /* Space for icons */
     height: 30px;
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
     font-size: 1.2rem;
-  }
-  
-  .file-input {
+}
+
+.file-input {
     position: absolute;
-    right: 0;
-    opacity: 0;
-    width: 40px;
-    height: 100%;
+    right: 40px; /* Align with upload icon */
+    opacity: 0; /* Hide the actual file input */
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-  }
-  
-  .upload-icon {
+}
+
+.upload-icon {
     position: absolute;
-    right: 10px;
-    pointer-events: none; /* Allow clicks to pass through to the file input */
-  }
-  .image-preview {
+    right: 50px; /* Space between input and icon */
+    font-size: 20px;
+    color: #333; /* Adjust color as needed */
+    cursor: pointer; /* Ensure cursor indicates clickability */
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px; /* Space between input and icon */
+    font-size: 20px;
+    color: #333; /* Adjust color as needed */
+    cursor: pointer; /* Ensure cursor indicates clickability */
+}
+
+.image-preview {
     display: flex;
-    flex-direction: row; /* Align elements side by side */
+    flex-direction: row;
     justify-content: flex-start;
     margin-right: 40px;
 }
@@ -103,29 +111,115 @@ h1{
     margin-left: 80px;
 }
 
-.nutrition-info {
+.nutrition-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-x: auto;
+    overflow-y: hidden; /* Horizontal scroll only in the container */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left:50px;
-    span{
-        font-size: 1em;
-        font-weight: bold;
-        width: 300px;
-        border: 1px solid black;
-    }
+    flex-direction: row;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling in Safari */
 }
 
-.nutrition-table {
-    width: 80%;
-    height: 100px;
-    border-collapse: collapse;
-    border: 1px solid black;
-    background-color: #7fd38c;
+.nutrition-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 200px;
+    max-height: 350px;
+    overflow-y: auto;
+    flex-shrink: 0; /* Prevent shrinking */
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling in Safari */
 }
 
-.nutrition-table th, .nutrition-table td {
-    border: 1px solid black;
-    padding: 8px;
+.fruit-name {
+    font-size: 24px;
+    color: #2c3e50;
     text-align: center;
+    margin-bottom: 15px;
 }
+
+.nutrition-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nutrition-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 16px;
+    color: #34495e;
+}
+
+.nutrient-name {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.nutrient-value {
+    font-weight: normal;
+    color: #7f8c8d;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar for horizontal scrollbars */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 3px solid #f1f1f1; /* Adds a border around the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker thumb when hovered */
+  }
+  
+  /* Safari Specific Adjustments */
+  body::-webkit-scrollbar {
+    -webkit-appearance: none; /* Ensures the appearance is consistent */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    -webkit-appearance: none;
+  }
+  
+  /* Scrollable Container */
+  .scrollable-container {
+    max-height: 400px; /* Example height for scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    scrollbar-width: thin; /* Firefox scrollbar width */
+    scrollbar-color: #888 #f1f1f1; /* Firefox scrollbar color */
+  }
+
+  .loader {
+    border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey */
+    border-left: 4px solid #333; /* Darker grey */
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    align-self: center;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
